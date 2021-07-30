@@ -7,6 +7,7 @@ class Timer():
         self.mins = mins
         self.title = title
         self.msg = None
+        self.bot = bot
 
     async def start_timer(self):
         new_embed = Embed(title=self.title, description=f"{self.mins} min(s)", colour=Colour.red())
