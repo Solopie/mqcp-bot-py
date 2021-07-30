@@ -2,7 +2,7 @@ from discord.ext import tasks, commands
 from discord import Embed, Colour
 
 class Timer():
-    def __init__(self, ctx, mins, title):
+    def __init__(self, bot, ctx, mins, title):
         self.ctx = ctx
         self.mins = mins
         self.title = title
@@ -27,6 +27,11 @@ class Timer():
         await self.msg.edit(embed=new_embed)
 
         self.mins -= 1
+
+    @update_time.before_loop
+    async def before_timer(self):
+        await self.bot.wait_until_ready()
+
 
     @update_time.after_loop
     async def timer_completed(self):
