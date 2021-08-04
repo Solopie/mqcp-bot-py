@@ -1,5 +1,4 @@
 from discord.ext import commands
-from discord import Embed
 from util.config import TOKEN, PREFIX
 from cogs.timer import Timer
 
@@ -14,7 +13,7 @@ async def ping(ctx):
     await ctx.send("pong")
 
 @bot.command(name="timer", help=f"Creates a timer: {PREFIX}timer <minutes> [title]")
-async def timer(ctx, minutes:int, title="Timer"):
+async def timer(ctx, minutes:int, *, title="Timer"):
     if minutes <= 0 or minutes > 30:
         raise commands.errors.BadArgument
         
